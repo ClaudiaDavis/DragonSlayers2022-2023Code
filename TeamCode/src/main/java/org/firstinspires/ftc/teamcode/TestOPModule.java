@@ -49,9 +49,6 @@ public abstract class TestOPModule extends LinearOpMode {
                double x = gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
                double rx = gamepad1.right_stick_x;
 
-               // Denominator is the largest motor power (absolute value) or 1
-               // This ensures all the powers maintain the same ratio, but only when
-               // at least one is out of the range [-1, 1]
                double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
                double frontLeftPower = (y + x + rx) / denominator;
                double backLeftPower = (y - x + rx) / denominator;
@@ -64,9 +61,16 @@ public abstract class TestOPModule extends LinearOpMode {
                motorBackRight.setPower(backRightPower);
 
 
+               // Gamepad 1 inputs
 
+               Controls cont1 = new Controls(); // find or create OP mode to put here, should be driver control.
+               double leftStickY = cont1.drivePower();
+               double leftStickX = cont1.strafePower();
+               double rightStickX = cont1.turnPower();
 
-
+               //Mecanum Drive Method
+               Drive driver1 = new Drive();
+               driver1.mecanumDrive(leftStickY, leftStickX, rightStickX);
 
 
            }
