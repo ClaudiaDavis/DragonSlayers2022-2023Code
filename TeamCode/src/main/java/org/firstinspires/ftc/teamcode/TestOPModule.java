@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
@@ -60,17 +61,19 @@ public abstract class TestOPModule extends LinearOpMode {
                motorFrontRight.setPower(frontRightPower);
                motorBackRight.setPower(backRightPower);
 
-
                // Gamepad 1 inputs
-
-               Controls cont1 = new Controls(); // find or create OP mode to put here, should be driver control.
-               double leftStickY = cont1.drivePower();
-               double leftStickX = cont1.strafePower();
-               double rightStickX = cont1.turnPower();
-
-               //Mecanum Drive Method
-               Drive driver1 = new Drive();
-               driver1.mecanumDrive(leftStickY, leftStickX, rightStickX);
+//               OpMode operator1; //= new OpMode();
+//
+//               gamepad1 = gamepad1;
+//
+//               Controls cont1 = new Controls(this); // find or create OP mode to put here, should be driver control.
+//               double leftStickY = cont1.drivePower();
+//               double leftStickX = cont1.strafePower();
+//               double rightStickX = cont1.turnPower();
+//
+//               //Mecanum Drive Method
+//               Drive driver1 = new Drive();
+//               driver1.mecanumDrive(leftStickY, leftStickX, rightStickX);
 
 
            }

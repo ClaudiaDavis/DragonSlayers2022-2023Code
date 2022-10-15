@@ -29,6 +29,7 @@ public class Controls {
          * Gamepad 1
          * Controls the driving of the robot
          */
+        //TODO: Adam Change this part of the class for mechanum and/or make new mechanum function
         public  double drivePower() {
             double power = -1 * logitech.gamepad1.left_stick_y;
 
