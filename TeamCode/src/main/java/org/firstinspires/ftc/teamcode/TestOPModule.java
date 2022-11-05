@@ -1,6 +1,8 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
@@ -19,8 +21,9 @@ public abstract class TestOPModule extends LinearOpMode {
 
     private DcMotor leftMotor = null ;
     private DcMotor rightMotor = null;
+    private OpMode TeleOp;
 
-       public void runOpMode() {
+    public void runOpMode() {
 //           imu = hardwareMap.get(Gyroscope.class, "imu");
 //           motorTest = hardwareMap.get(DcMotor.class, "motorTest");
 //           digitalTouch = hardwareMap.get(DigitalChannel.class, "digitalTouch");
@@ -63,7 +66,9 @@ public abstract class TestOPModule extends LinearOpMode {
 
                // Gamepad 1 inputs
 
-               Controls cont1 = new Controls(); // find or create OP mode to put here, should be driver control.
+            
+
+               Controls cont1 = new Controls(TeleOp); // find or create OP mode to put here, should be driver control.
                double leftStickY = cont1.drivePower();
                double leftStickX = cont1.strafePower();
                double rightStickX = cont1.turnPower();
