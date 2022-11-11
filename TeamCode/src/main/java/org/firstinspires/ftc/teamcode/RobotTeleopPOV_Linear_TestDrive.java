@@ -69,9 +69,9 @@ public class RobotTeleopPOV_Linear_TestDrive extends LinearOpMode {
 //       private DistanceSensor sensorColorRange;
 //       private Servo servoTest;
 
-    private DcMotor leftMotor = null;
-    private DcMotor rightMotor = null;
-    private OpMode TeleOp;
+//    private DcMotor leftMotor = null;
+//    private DcMotor rightMotor = null;
+    //private OpMode TeleOp;
 
     public void runOpMode() {
 //           imu = hardwareMap.get(Gyroscope.class, "imu");
@@ -116,14 +116,14 @@ public class RobotTeleopPOV_Linear_TestDrive extends LinearOpMode {
 
             // Gamepad 1 inputs
 
-            Controls cont1 = new Controls(this); // find or create OP mode to put here, should be driver control.
-            double leftStickY = cont1.drivePower();
-            double leftStickX = cont1.strafePower();
-            double rightStickX = cont1.turnPower();
-
-            //Mecanum Drive Method
-            Drive driver1 = new Drive();
-            driver1.mecanumDrive(leftStickY, leftStickX, rightStickX);
+//            Controls cont1 = new Controls(this); // find or create OP mode to put here, should be driver control.
+//            double leftStickY = cont1.drivePower();
+//            double leftStickX = cont1.strafePower();
+//            double rightStickX = cont1.turnPower();
+//
+//            //Mecanum Drive Method
+//            Drive driver1 = new Drive();
+//            driver1.mecanumDrive(leftStickY, leftStickX, rightStickX);
 
 
         }
