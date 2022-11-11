@@ -1,18 +1,20 @@
 package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
+
+
+/*
+* Teleop:
+* Robot/Controls:
+* Manipulator
+* Motor[],Sensor[],Servo[]
+* boolean: isEngaged (if yes: initialize motors, etc | if no: do not initialize)
+* Pole flinger
+*
+ */
 public class Controls {
 
     /* Enumerator for setting grabber states (words are easier to read than numbers) */
-    public static enum GrabberState {
-            DEPLOYED,
-            RETRACTED;
-        }
-        GrabberState grabberState = GrabberState.DEPLOYED;
-
-        /* Class Variables */
-        double driveSpeedMultiplier = 1.00;
-        double tiltSpeedMultiplier  = 0.50;
 
         //Object Creation
         OpMode logitech;
