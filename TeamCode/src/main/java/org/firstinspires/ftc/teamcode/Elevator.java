@@ -20,11 +20,12 @@ public class Elevator {
             motor2.setDirection(DcMotorSimple.Direction.FORWARD);
 
             // Start both motors
-            motor1.start();
-            motor2.start();
+            //motor1.start();
+            //motor2.start();
         }
 
         private int joystickThreshold = 5;
+
         public void moveWithJoystick(){
             while(running) {
                 joystickValue = gamepad1.;
@@ -42,6 +43,8 @@ public class Elevator {
                 }
             }
         }
+
+        /*
 
         private EncoderValue motor2CurrentPosition;
         private static final EncoderValue MAXROTATION = 13;
@@ -67,6 +70,7 @@ public class Elevator {
                 moveDown();
             }
         }
+        */
 
         public boolean comeBackHome() {
             boolean doNotMove = false;
@@ -75,19 +79,19 @@ public class Elevator {
 
         public void moveDown() {
             // Set the direction of both motors to "down"
-            motor1.setDirection(Direction.DOWN);
-            motor2.setDirection(Direction.DOWN);
+            motor1.setDirection(DcMotorSimple.Direction.REVERSE);
+            motor2.setDirection(DcMotorSimple.Direction.REVERSE);
 
             // Start both motors
-            motor1.start();
-            motor2.start();
+            //motor1.start();
+            //motor2.start();
         }
 
-        public void stop() {
+       // public void stop() {
             // Stop both motors
-            motor1.stop();
-            motor2.stop();
-        }
+            //motor1.stop();
+            //motor2.stop();
 }
+
 
 
