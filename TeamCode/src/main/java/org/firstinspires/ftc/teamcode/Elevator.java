@@ -44,12 +44,12 @@ public class Elevator {
         //double y = gamepad2.left_stick_y; // Remember, this is reversed!
         double currentPosition = motor1.getCurrentPosition();
         double MAXROTATION = 100.0; //change when know actual number
+        double MINROTATION = 0.0; // change when you know actual number
 
 
         public void moveWithJoystick(){
             while(running) {
                 double joystickValue = gamepad2.left_stick_y;
-                        //get joy;
                 if (joystickValue < joystickThreshold*(-1)) {
                     moveDown();
                 }
@@ -57,18 +57,18 @@ public class Elevator {
                     if (currentPosition < MAXROTATION) {
                         moveUp();
                     }
+                }
 
-                }
-                else {
-                    stop();
-                }
             }
         }
 
+        //ASK STEVE ON HOW TO GET IT TO RETURN HOME
+        public void comeBackHome() {
+            double cp = motor1.getCurrentPosition();
+            while (cp < MINROTATION){
+                moveDown();
+            }
 
-        public boolean comeBackHome() {
-        boolean doNotMove = false;
-        sleep(3000);
          }
 
         /*
