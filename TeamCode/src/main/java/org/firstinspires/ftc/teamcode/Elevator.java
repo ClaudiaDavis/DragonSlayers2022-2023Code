@@ -7,21 +7,19 @@ public class Elevator {
 
         // Motor objects for the two motors that drive the elevator
         private DcMotor motor1;
-        private DcMotor motor2;
         Gamepad gamepad2 = new Gamepad();
 
 
-        public Elevator(Gamepad g, DcMotor m1, DcMotor m2) {
+        public Elevator(Gamepad g, DcMotor m1) {
             // Initialize the two motor objects
             motor1 = m1;
-            motor2 = m2;
+
             gamepad2 = g;
         }
 
         public void moveUp() {
             // Set the direction of both motors to "up"
             motor1.setDirection(DcMotorSimple.Direction.FORWARD);
-            motor2.setDirection(DcMotorSimple.Direction.FORWARD);
 
             // Start both motors
             //motor1.start();
@@ -31,7 +29,7 @@ public class Elevator {
     public void moveDown() {
         // Set the direction of both motors to "down"
         motor1.setDirection(DcMotorSimple.Direction.REVERSE);
-        motor2.setDirection(DcMotorSimple.Direction.REVERSE);
+
 
         // Start both motors
         //motor1.start();

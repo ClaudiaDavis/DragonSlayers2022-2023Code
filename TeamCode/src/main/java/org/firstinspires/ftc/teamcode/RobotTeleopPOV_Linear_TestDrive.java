@@ -85,6 +85,8 @@ public class RobotTeleopPOV_Linear_TestDrive extends LinearOpMode {
         DcMotor motorFrontRight = hardwareMap.dcMotor.get("motorFrontRight");
         DcMotor motorBackRight = hardwareMap.dcMotor.get("motorBackRight");
         Servo clawServo = hardwareMap.servo.get("clawMotor");
+        DcMotor liftMotor1 = hardwareMap.dcMotor.get("liftMotor1");
+        DcMotor liftMotor2 = hardwareMap.dcMotor.get("liftMotor2");
 
         // Reverse the right side motors
         // Reverse left motors if you are using NeveRests
@@ -115,13 +117,73 @@ public class RobotTeleopPOV_Linear_TestDrive extends LinearOpMode {
             motorFrontRight.setPower(frontRightPower);
             motorBackRight.setPower(backRightPower);
 
+            //Elevator Code
+            double liftVariable = gamepad2.left_stick_y;
+            boolean comehome = gamepad2.b;
+            Elevator lift = new Elevator(gamepad2, liftMotor1);
+
+            if(comehome){
+                lift.comeBackHome();
+            }
+
+
+
+            /*
+                   public void moveUp() {
+            // Set the direction of both motors to "up"
+            motor1.setDirection(DcMotorSimple.Direction.FORWARD);
+            motor2.setDirection(DcMotorSimple.Direction.FORWARD);
+
+            // Start both motors
+            //motor1.start();
+            //motor2.start();
+            }
+
+    public void moveDown() {
+        // Set the direction of both motors to "down"
+        motor1.setDirection(DcMotorSimple.Direction.REVERSE);
+        motor2.setDirection(DcMotorSimple.Direction.REVERSE);
+
+        // Start both motors
+        //motor1.start();
+        //motor2.start();
+    }
+
+
+        int joystickThreshold = 5;
+        boolean running;
+        //double y = gamepad2.left_stick_y; // Remember, this is reversed!
+        double currentPosition = motor1.getCurrentPosition();
+        double MAXROTATION = 100.0; //change when know actual number
+        double MINROTATION = 0.0; // change when you know actual number
+
+
+        public void moveWithJoystick(){
+            while(running) {
+                double joystickValue = gamepad2.left_stick_y;
+                if (joystickValue < joystickThreshold*(-1)) {
+                    moveDown();
+                }
+                else if (joystickValue > joystickThreshold){
+                    if (currentPosition < MAXROTATION) {
+                        moveUp();
+                    }
+                }
+
+            }
+        }
+             */
+
+
+
+
+
+
             //Claw Code
 
             boolean open = gamepad2.a;
             boolean softclose = gamepad2.y;
             boolean hardclose = gamepad2.b;
-
-
 
             Claw claw = new Claw(gamepad2, clawServo);
 
