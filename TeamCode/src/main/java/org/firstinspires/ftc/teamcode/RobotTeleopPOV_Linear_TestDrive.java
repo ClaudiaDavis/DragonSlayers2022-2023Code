@@ -84,6 +84,7 @@ public class RobotTeleopPOV_Linear_TestDrive extends LinearOpMode {
         DcMotor motorBackLeft = hardwareMap.dcMotor.get("motorBackLeft");
         DcMotor motorFrontRight = hardwareMap.dcMotor.get("motorFrontRight");
         DcMotor motorBackRight = hardwareMap.dcMotor.get("motorBackRight");
+        Servo clawServo = hardwareMap.servo.get("clawMotor");
 
         // Reverse the right side motors
         // Reverse left motors if you are using NeveRests
@@ -98,6 +99,7 @@ public class RobotTeleopPOV_Linear_TestDrive extends LinearOpMode {
         if (isStopRequested()) return;
 
         while (opModeIsActive()) {
+            //Driving:
             double y = gamepad1.left_stick_y; // Remember, this is reversed!
             double x = -gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
             double rx = gamepad1.right_stick_x;
@@ -112,6 +114,31 @@ public class RobotTeleopPOV_Linear_TestDrive extends LinearOpMode {
             motorBackLeft.setPower(backLeftPower);
             motorFrontRight.setPower(frontRightPower);
             motorBackRight.setPower(backRightPower);
+
+            //Claw Code
+
+            boolean open = gamepad2.a;
+            boolean softclose = gamepad2.y;
+            boolean hardclose = gamepad2.b;
+
+
+
+            Claw claw = new Claw(gamepad2, clawServo);
+
+            if(open) {
+                claw.open();
+            }
+            else if(softclose){
+                claw.closeSoft();
+            }
+            else if(hardclose){
+                claw.closeHard();
+            }
+            else{
+                claw.closeSoft();
+            }
+
+
 
 
 
