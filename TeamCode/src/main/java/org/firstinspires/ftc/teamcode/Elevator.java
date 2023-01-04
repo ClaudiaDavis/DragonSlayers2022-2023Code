@@ -8,6 +8,8 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 import org.firstinspires.ftc.robotcore.internal.android.dx.dex.file.ValueEncoder;
 
 public class Elevator {
+        /*TODO:The motor is actually reversed so change all instances of direction
+        forward and vice versa*/
 
         // Motor objects for the two motors that drive the elevator
         private DcMotor motor1;//this motor is for the elevator
