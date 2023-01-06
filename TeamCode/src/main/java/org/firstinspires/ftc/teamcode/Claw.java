@@ -1,9 +1,8 @@
 package org.firstinspires.ftc.teamcode;
-
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.Servo;
 
-public class Claw {
+public class Claw { //This Class is done, except for the exact angles needed
     /*
 
 The claw operates on a servo. Servos can be tricky, but here is basically what you need to know.
@@ -25,34 +24,25 @@ TODO: When off: default is closed hard; when robot is on: open position; three b
 
      */
 
-    Gamepad gamepad2 = new Gamepad();
+    Gamepad gamepad = new Gamepad();
     Servo servo;
 
     public Claw(Gamepad g, Servo s) {
-        gamepad2 = g;
+        gamepad = g;
         servo = s;
-
-        closeHard();
+        setClosed();
     }
-
-    public void start(){
-        open();
+    public void start(){//When the servo starts, it opens
+        setOpen();
     }
-
-    public void open(){
-        servo.setPosition(115.0);
+    public void setClosed() {
+        servo.setPosition(0.8);//Depending on how the Servo is set up, the closed is either 0 or 1
     }
-
-    public void closeHard() {
-        servo.setPosition(80.0);
+    public void setPartial(){
+        servo.setPosition(0.69);//nice
 
     }
-
-    public void closeSoft(){
-        servo.setPosition(75.0);
+    public void setOpen(){
+        servo.setPosition(0.0);//Depending on how the Servo is set up, the open is either 0 or 1
     }
-
-
-
-
 }
