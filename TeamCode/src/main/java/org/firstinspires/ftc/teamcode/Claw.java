@@ -46,4 +46,3 @@ TODO: When off: default is closed hard; when robot is on: open position; three b
         servo.setPosition(0.0);//Depending on how the Servo is set up, the open is either 0 or 1
     }
 }
-

@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\.idea",
+    "\\FtcRobotController",
+    "\\FtcRobotController\\src",
+    "\\FtcRobotController\\src\\main",
+    "\\gradle",
+    "\\libs",
+    "\\TeamCode",
+    "\\TeamCode\\lib",
+    "\\TeamCode\\src"
+  ],
+  "SelectedNode": "\\build.common.gradle",
+  "PreviewInSolutionExplorer": false
+}
