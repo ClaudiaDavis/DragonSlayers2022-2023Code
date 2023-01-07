@@ -85,6 +85,11 @@ public class RobotTeleopPOV_Linear_TestDrive extends LinearOpMode {
         DcMotor motorFrontRight = hardwareMap.dcMotor.get("motorFrontRight");
         DcMotor motorBackRight = hardwareMap.dcMotor.get("motorBackRight");
         Servo clawServo = hardwareMap.servo.get("clawMotor");
+<<<<<<< HEAD
+=======
+        DcMotor liftMotor1 = hardwareMap.dcMotor.get("liftMotor1");
+        DcMotor liftMotor2 = hardwareMap.dcMotor.get("liftMotor2");
+>>>>>>> 1269a6b8dc7fb2e1032ddb38011ff62fafe43dbf
 
         // Reverse the right side motors
         // Reverse left motors if you are using NeveRests
@@ -115,6 +120,7 @@ public class RobotTeleopPOV_Linear_TestDrive extends LinearOpMode {
             motorFrontRight.setPower(frontRightPower);
             motorBackRight.setPower(backRightPower);
 
+<<<<<<< HEAD
             //Claw Code
 
             boolean open = gamepad2.a;
@@ -136,6 +142,40 @@ public class RobotTeleopPOV_Linear_TestDrive extends LinearOpMode {
             }
             else{
                 claw.closeSoft();
+=======
+            //Elevator Code
+            //double liftVariable = gamepad2.left_stick_y;
+            boolean comehome = gamepad2.x;
+            Elevator lift = new Elevator(gamepad2, liftMotor1);
+
+            lift.moveWithJoystick();
+            if (comehome){
+                lift.comeHome();
+            }
+
+
+
+
+            //Claw Code
+
+            boolean buttonA= gamepad2.a;
+            boolean buttonY = gamepad2.y;
+            boolean buttonB = gamepad2.b;
+
+            Claw claw = new Claw(gamepad2, clawServo);
+
+            if(buttonA) {
+                claw.setOpen();
+            }
+            else if(buttonY){
+                claw.setPartial();
+            }
+            else if(buttonB){
+                claw.setClosed();
+            }
+            else{
+                claw.setPartial();
+>>>>>>> 1269a6b8dc7fb2e1032ddb38011ff62fafe43dbf
             }
 
 
