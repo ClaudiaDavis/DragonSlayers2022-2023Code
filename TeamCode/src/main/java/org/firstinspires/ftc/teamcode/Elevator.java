@@ -13,9 +13,9 @@ public class Elevator {
 
         // Motor objects for the two motors that drive the elevator
         private DcMotor motor1;//this motor is for the elevator
-        Gamepad gamepad2 = new Gamepad();
+       // Gamepad g = new Gamepad();
 
-        int joystickThreshold = 5;
+        float joystickThreshold = 0.05f;
         boolean running = false;//This is probably a placeholder for actually starting the motor
         //double y = gamepad2.left_stick_y; // Remember, this is reversed!
         public static final double maxrotationVAL = 180.0; //change when know actual number
@@ -25,54 +25,76 @@ public class Elevator {
 
             // Initialize the two motor objects
             motor1 = m1;
-            gamepad2 = g;
+          //  gamepad2 = g;
         }
 
-    public void moveUp() {
+    public void moveUpFast() {
             // Set the direction of both motors to "up" then starts the motors (I think)
-            if (motor1.getCurrentPosition() < maxrotationVAL){
-                motor1.setDirection(DcMotorSimple.Direction.FORWARD);
+                motor1.setDirection(DcMotorSimple.Direction.REVERSE);
+                motor1.setPower(0.5);
                 running = true;
-            }
     }
 
-    public void moveDown() {
-         if (motor1.getCurrentPosition() < init_position) {
-             motor1.setDirection(DcMotorSimple.Direction.REVERSE);
+    public void moveDownFast() {
+         //if (motor1.getCurrentPosition() < init_position) {
+             motor1.setDirection(DcMotorSimple.Direction.FORWARD);
+             motor1.setPower(0.5);
              running = true;
-         }
+         //}
+    }
+    public void moveUpSlow() {
+        // Set the direction of both motors to "up" then starts the motors (I think)
+        motor1.setDirection(DcMotorSimple.Direction.REVERSE);
+        motor1.setPower(0.25);
+        running = true;
     }
 
-    public void moveWithJoystick(){ // this garbage and needs to be fixed (I think)
+    public void moveDownSlow() {
+        //if (motor1.getCurrentPosition() < init_position) {
+        motor1.setDirection(DcMotorSimple.Direction.FORWARD);
+        motor1.setPower(0.25);
+        running = true;
+        //}
+    }
+    //-128,128
+    public void moveWithJoystick(Gamepad joy){ // this garbage and needs to be fixed (I think)
         //running = true;
         //while(running) {
-        double joystickValue = gamepad2.left_stick_y;
+        double joystickLeftValue = joy.left_stick_y;
+        double joystickRightValue = joy.right_stick_y;
         //get joy;
-        if (joystickValue < joystickThreshold) {//Maybe if this does not work put *(-1)?
-                    moveDown();
+        if (joystickLeftValue < (joystickThreshold*-1)) {//Maybe if this does not work put *(-1)?
+                    moveDownFast();
         }
-        else if (joystickValue > joystickThreshold){
-            if (motor1.getCurrentPosition() < maxrotationVAL) {
-                moveUp();
-            }
+        else if (joystickLeftValue > joystickThreshold){
+           // if (motor1.getCurrentPosition() < maxrotationVAL) {
+                moveUpFast();
+         //   }
+        }
+        else if (joystickRightValue < (joystickThreshold*-1)) {
+            moveDownSlow();
+        }
+        else if (joystickRightValue > joystickThreshold) {
+            moveUpSlow();
         }
         else {
             running = false; // someone put "stop();" so maybe something has this function
                                     // and it should be utilized
+            motor1.setPower(0);
         }
     }
 
 
-    public void moveElevatorToMaxPosition(){
-        while (motor1.getCurrentPosition() != maxrotationVAL) {
-            moveUp();
-        }
-    }
+//    public void moveElevatorToMaxPosition(){
+//        while (motor1.getCurrentPosition() != maxrotationVAL) {
+//            moveUp();
+//        }
+//    }
 
-    public void comeHome() {
-        while(motor1.getCurrentPosition() < minrotationVal){
+   /* public void comeHome() {
+        while(motor1.getCurrentPosition() < init_position){
             moveDown();
         }
-    }
+    }*/
 }
 

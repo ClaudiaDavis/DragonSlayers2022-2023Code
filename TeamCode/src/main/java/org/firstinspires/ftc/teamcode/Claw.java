@@ -24,13 +24,13 @@ TODO: When off: default is closed hard; when robot is on: open position; three b
 
      */
 
-    Gamepad gamepad = new Gamepad();
-    Servo servo;
 
-    public Claw(Gamepad g, Servo s) {
-        gamepad = g;
+    Servo servo;
+    private int servo_state;
+
+    public Claw(Servo s) {
         servo = s;
-        setClosed();
+        //setClosed();
     }
     public void start(){//When the servo starts, it opens
         setOpen();
@@ -44,5 +44,6 @@ TODO: When off: default is closed hard; when robot is on: open position; three b
     }
     public void setOpen(){
         servo.setPosition(0.0);//Depending on how the Servo is set up, the open is either 0 or 1
+       // wait(500);
     }
 }

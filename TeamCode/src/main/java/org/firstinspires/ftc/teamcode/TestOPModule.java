@@ -68,14 +68,14 @@ public abstract class TestOPModule extends LinearOpMode {
 
             
 
-               Controls cont1 = new Controls(TeleOp); // find or create OP mode to put here, should be driver control.
-               double leftStickY = cont1.drivePower();
-               double leftStickX = cont1.strafePower();
-               double rightStickX = cont1.turnPower();
+              // Controls cont1 = new Controls(TeleOp); // find or create OP mode to put here, should be driver control.
+             //  double leftStickY = cont1.drivePower();
+               //double leftStickX = cont1.strafePower();
+               //double rightStickX = cont1.turnPower();
 
                //Mecanum Drive Method
                Drive driver1 = new Drive();
-               driver1.mecanumDrive(leftStickY, leftStickX, rightStickX);
+              // driver1.mecanumDrive(leftStickY, leftStickX, rightStickX);
 
 
            }

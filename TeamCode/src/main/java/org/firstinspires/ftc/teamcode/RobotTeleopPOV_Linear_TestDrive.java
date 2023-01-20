@@ -85,11 +85,8 @@ public class RobotTeleopPOV_Linear_TestDrive extends LinearOpMode {
         DcMotor motorFrontRight = hardwareMap.dcMotor.get("motorFrontRight");
         DcMotor motorBackRight = hardwareMap.dcMotor.get("motorBackRight");
         Servo clawServo = hardwareMap.servo.get("clawMotor");
-<<<<<<< HEAD
-=======
         DcMotor liftMotor1 = hardwareMap.dcMotor.get("liftMotor1");
-        DcMotor liftMotor2 = hardwareMap.dcMotor.get("liftMotor2");
->>>>>>> 1269a6b8dc7fb2e1032ddb38011ff62fafe43dbf
+        //DcMotor liftMotor2 = hardwareMap.dcMotor.get("liftMotor2");
 
         // Reverse the right side motors
         // Reverse left motors if you are using NeveRests
@@ -99,7 +96,8 @@ public class RobotTeleopPOV_Linear_TestDrive extends LinearOpMode {
         telemetry.update();
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
-
+        Claw claw = new Claw(clawServo);
+        Elevator lift = new Elevator(gamepad2, liftMotor1);
         // run until the end of the match (driver presses STOP)
         if (isStopRequested()) return;
 
@@ -115,75 +113,48 @@ public class RobotTeleopPOV_Linear_TestDrive extends LinearOpMode {
             double frontRightPower = (y - x - rx) / denominator;
             double backRightPower = (y + x - rx) / denominator;
 
+            //We should change this so that i is less jerky and moves more slowly
+            //Do a block where you just multiply each power double by 0.75 or 0.5 or whatever
+            //this is to tune it
+            frontLeftPower = frontLeftPower*0.5;
+            backLeftPower = backLeftPower*0.5;
+            frontRightPower = frontRightPower*0.5;
+            backRightPower = backRightPower*0.5;
+            //added during comp
+
             motorFrontLeft.setPower(frontLeftPower);
             motorBackLeft.setPower(backLeftPower);
             motorFrontRight.setPower(frontRightPower);
             motorBackRight.setPower(backRightPower);
 
-<<<<<<< HEAD
-            //Claw Code
-
-            boolean open = gamepad2.a;
-            boolean softclose = gamepad2.y;
-            boolean hardclose = gamepad2.b;
 
 
-
-            Claw claw = new Claw(gamepad2, clawServo);
-
-            if(open) {
-                claw.open();
-            }
-            else if(softclose){
-                claw.closeSoft();
-            }
-            else if(hardclose){
-                claw.closeHard();
-            }
-            else{
-                claw.closeSoft();
-=======
             //Elevator Code
-            //double liftVariable = gamepad2.left_stick_y;
-            boolean comehome = gamepad2.x;
-            Elevator lift = new Elevator(gamepad2, liftMotor1);
-
-            lift.moveWithJoystick();
-            if (comehome){
-                lift.comeHome();
-            }
+                lift.moveWithJoystick(gamepad2);
+//                if (comehome) {
+//                    lift.comeHome();
+//                }
 
 
+                //Claw Code
 
+                boolean buttonA = gamepad2.a;
+                boolean buttonY = gamepad2.y;
+                boolean buttonB = gamepad2.b;
 
-            //Claw Code
+                //Claw claw = new Claw(gamepad2, clawServo);
 
-            boolean buttonA= gamepad2.a;
-            boolean buttonY = gamepad2.y;
-            boolean buttonB = gamepad2.b;
-
-            Claw claw = new Claw(gamepad2, clawServo);
-
-            if(buttonA) {
-                claw.setOpen();
-            }
-            else if(buttonY){
-                claw.setPartial();
-            }
-            else if(buttonB){
-                claw.setClosed();
-            }
-            else{
-                claw.setPartial();
->>>>>>> 1269a6b8dc7fb2e1032ddb38011ff62fafe43dbf
-            }
+                if (buttonA) {
+                    claw.setOpen();
+                } else if (buttonY) {
+                    claw.setPartial();
+                } else if (buttonB) {
+                    claw.setClosed();
+                }
 
 
 
-
-
-
-            // Gamepad 1 inputs
+                // Gamepad 1 inputs
 
 //            Controls cont1 = new Controls(this); // find or create OP mode to put here, should be driver control.
 //            double leftStickY = cont1.drivePower();
@@ -195,10 +166,10 @@ public class RobotTeleopPOV_Linear_TestDrive extends LinearOpMode {
 //            driver1.mecanumDrive(leftStickY, leftStickX, rightStickX);
 
 
-        }
+            }
 
 
-        //
+            //
 //    /* Declare OpMode members. */
 //    public DcMotor  leftDrive   = null;
 //    public DcMotor  rightDrive  = null;
@@ -303,5 +274,5 @@ public class RobotTeleopPOV_Linear_TestDrive extends LinearOpMode {
 //            sleep(50);
 //        }
 //    }
+        }
     }
-}
