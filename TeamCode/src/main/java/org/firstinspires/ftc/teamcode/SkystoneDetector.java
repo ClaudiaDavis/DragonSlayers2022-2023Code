@@ -12,7 +12,7 @@ import org.openftc.easyopencv.OpenCvPipeline;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//TODO: This is part of autonomous
 public class SkystoneDetector extends OpenCvPipeline {
     enum SkystoneLocation {
         LEFT,

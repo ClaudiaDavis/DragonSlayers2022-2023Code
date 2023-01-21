@@ -6,14 +6,13 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.robotcore.internal.android.dx.dex.file.ValueEncoder;
-//Old version, push dont work
+
 public class Elevator {
         /*TODO:The motor is actually reversed so change all instances of direction
         forward and vice versa*/
 
-        // Motor objects for the two motors that drive the elevator
         private DcMotor motor1;//this motor is for the elevator
-       // Gamepad g = new Gamepad();
+        // Gamepad g = new Gamepad();
 
         float joystickThreshold = 0.05f;
         boolean running = false;//This is probably a placeholder for actually starting the motor
@@ -78,23 +77,11 @@ public class Elevator {
             moveUpSlow();
         }
         else {
-            running = false; // someone put "stop();" so maybe something has this function
-                                    // and it should be utilized
+            running = false;
+
             motor1.setPower(0);
         }
     }
 
-
-//    public void moveElevatorToMaxPosition(){
-//        while (motor1.getCurrentPosition() != maxrotationVAL) {
-//            moveUp();
-//        }
-//    }
-
-   /* public void comeHome() {
-        while(motor1.getCurrentPosition() < init_position){
-            moveDown();
-        }
-    }*/
 }
 
